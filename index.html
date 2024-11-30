@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NenPower - Energy Storage Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/np.png">
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-SP1R7M3HKX"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-SP1R7M3HKX');
+	</script>
+
+	
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+		
+		.logo {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            z-index: 10;
+            width: 100px;
+            height: auto;
+        }
+		
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+
+        /* Banner styles */
+        .banner {
+            background-image: url('./images/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+        .banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28c2c3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Company intro styles */
+        .company-intro {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 50px 0;
+        }
+        .company-intro-images {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            height: 300px;
+        }
+        .company-intro-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .company-intro-image.active {
+            opacity: 1;
+        }
+        .company-intro-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Product overview styles */
+        .product-overview {
+            background-color: #f4f4f4;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Product specs styles */
+        .product-specs {
+            padding: 50px 0;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #28c2c3;
+            color: white;
+        }
+
+        /* Distributor services styles */
+        .distributor-services {
+            background-color: #f4f4f4;
+            padding: 50px 0;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .service-icon {
+            font-size: 2rem;
+            color: #28c2c3;
+            margin-bottom: 10px;
+        }
+        .service-content {
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Contact form styles */
+        .contact-form {
+            padding: 50px 0;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button[type="submit"] {
+            background-color: #28c2c3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Contact info styles */
+        .contact-info {
+            background-color: #f4f4f4;
+            padding: 50px 0;
+        }
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .contact-item i {
+            margin-right: 10px;
+            color: #28c2c3;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            .company-intro, .contact-info {
+                flex-direction: column;
+            }
+        }
+
+		
+		
+    </style>
+	
+</head>
+<body>
+        <img src="./images/NenPowerLogo.png" alt="NenPower Logo" class="logo">
+
+    <!-- Banner Section -->
+
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Your energy storage product factory in China</h1><h1>Seeking global distributors</h1>
+            <a href="#contact-us" class="btn">Join</a>
+        </div>
+    </section>
+
+    <!-- Company Introduction -->
+    <section class="company-intro container">
+        <div class="company-intro-images">
+            <img src="./images/nenpowerfac.png" alt="Factory image 1" class="company-intro-image active" width=600 height=400>
+            <img src="./images/nenpowerfac-2.JPG" alt="Factory image 2" class="company-intro-image" width=600 height=400> 
+            <img src="./images/nenpowerfac-3.JPG" alt="Factory image 3" class="company-intro-image" width=600 height=400>
+        </div>
+        <div class="company-intro-text">
+            <h2>About NenPower</h2>
+            <p>NenPower is a Shanghai-based factory with over 500 employees, specializing in cutting-edge energy storage solutions. Our products are internationally certified, meeting the highest standards of quality and reliability.</p>
+            <p>With a strong focus on innovation and customer satisfaction, we have built a global customer base that trusts our products for their energy storage needs. Our state-of-the-art facility ensures that we deliver top-notch products consistently.</p>
+        </div>
+    </section>
+
+    <!-- Product Overview -->
+    <section class="product-overview">
+        <div class="container">
+            <h2>Our Energy Storage Solutions</h2>
+            <p>NenPower offers a range of energy storage products designed to meet diverse needs, from residential to industrial applications. Our solutions combine efficiency, reliability, and innovative design.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="./images/Wall-mounted.png" alt="Wall-mounted" weight=400 height=400>
+                    <h3>Wall-mounted</h3>
+                    <p>Space-saving design for residential use</p>
+                </div>
+                <div class="product-item">
+                    <img src="./images/Grounded-Wheels.png" alt="Grounded Wheels" weight=400 height=400>
+                    <h3>Grounded Wheels</h3>
+                    <p>Mobile energy storage solution</p>
+                </div>
+                <div class="product-item">
+                    <img src="./images/Stackable.png" alt="Stackable" weight=400 height=400>
+                    <h3>Stackable</h3>
+                    <p>Modular design for scalable energy storage</p>
+                </div>
+                <div class="product-item">
+                    <img src="./images/Commercial.png" alt="Commercial & Industrial" weight=400 height=400>
+                    <h3>Commercial & Industrial</h3>
+                    <p>High-capacity storage for large-scale applications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Specifications -->
+    <section class="product-specs container">
+        <h2>Product Specifications</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Parameters</th>
+                    <th>Wall-mounted-1</th>
+                    <th>Wall-mounted-2</th>
+                    <th>Grounded Wheels</th>
+                    <th>Stackable</th>
+                    <th>Commercial & Industrial-1</th>
+                    <th>Commercial & Industrial-2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rated Energy</td>
+                    <td>5.12kWh</td>
+                    <td>10.24kWh</td>
+                    <td>14.34kWh</td>
+                    <td>5kW Inverter/5kWh per module</td>
+                    <td>50kW/100kWh</td>
+                    <td>100kW/215kWh</td>
+                </tr>
+                <tr>
+                    <td>Rated Voltage</td>
+                    <td>51.2V</td>
+                    <td>51.2V</td>
+                    <td>51.2V</td>
+                    <td>51.2V</td>
+                    <td>51.2V</td>
+                    <td>51.2V</td>
+                </tr>
+                <tr>
+                    <td>Rated Capacity</td>
+                    <td>100Ah</td>
+                    <td>200Ah</td>
+                    <td>280Ah</td>
+                    <td>100Ah</td>
+                    <td>280Ah</td>
+                    <td>280Ah</td>
+                </tr>
+                <tr>
+                    <td>Dimension</td>
+                    <td>650×384×142mm</td>
+                    <td>680×412×231mm</td>
+                    <td>825×413×233mm</td>
+                    <td>450×450×515mm</td>
+                    <td>1000×1400×2300mm</td>
+                    <td>1740×1100×2330mm</td>
+                </tr>
+                <tr>
+                    <td>Approx.Weight</td>
+                    <td>48kg</td>
+                    <td>86kg</td>
+                    <td>130kg</td>
+                    <td>185kg</td>
+                    <td>1200kg</td>
+                    <td>2400kg</td>
+                </tr>
+                <tr>
+                    <td>Cycle Life</td>
+                    <td>6000 cycles</td>
+                    <td>6000 cycles</td>
+                    <td>6000 cycles</td>
+                    <td>6000 cycles</td>
+                    <td>6000 cycles</td>
+                    <td>6000 cycles</td>
+                </tr>
+                <tr>
+                    <td>Efficiency</td>
+                    <td>95%</td>
+                    <td>95%</td>
+                    <td>95%</td>
+                    <td>95%</td>
+                    <td>95%</td>
+                    <td>95%</td>
+                </tr>
+                <tr>
+                    <td>Operating Temperature</td>
+                    <td>-20°C to 60°C</td>
+                    <td>-20°C to 60°C</td>
+                    <td>-20°C to 60°C</td>
+                    <td>-20°C to 60°C</td>
+                    <td>-20°C to 60°C</td>
+                    <td>-20°C to 60°C</td>
+                </tr>
+                <tr>
+                    <td>Warranty</td>
+                    <td>5 years</td>
+                    <td>5 years</td>
+                    <td>5 years</td>
+                    <td>5 years</td>
+                    <td>5 years</td>
+                    <td>5 years</td>
+                </tr>
+                <tr>
+                    <td>Communication</td>
+                    <td>Ethernet, RS485, RS232, CAN</td>
+                    <td>Ethernet, RS485, RS232, CAN</td>
+                    <td>Ethernet, RS485, RS232, CAN</td>
+                    <td>Ethernet, RS485, RS232, CAN</td>
+                    <td>Ethernet, RS485, CAN</td>
+                    <td>Ethernet, RS485, CAN</td>
+                </tr>
+                <tr>
+                    <td>Certificate</td>
+                    <td>CE, RoHS, UN38.3</td>
+                    <td>CE, RoHS, UN38.3</td>
+                    <td>CE, RoHS, UN38.3</td>
+                    <td>CE, RoHS, UN38.3</td>
+                    <td>CE, RoHS, UN38.3</td>
+                    <td>CE, RoHS, UN38.3</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Distributor Services -->
+    <section class="distributor-services">
+        <div class="container">
+            <h2 class="text-center">Services for Distributors</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">🎨</div>
+                        <h3>Customized Branding</h3>
+                        <p>We offer logo and branding customization options to help you establish a strong market presence.</p>
+                </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">🛠️</div>
+                        <h3>Technical Support</h3>
+                        <p>Our team provides comprehensive support for installation, troubleshooting, and maintenance.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">📢</div>
+                        <h3>Market and lead support</h3>
+                        <p>Access a wide range of promotional resources and sales leads to boost your selling efforts.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">📦</div>
+                        <h3>Flexible MOQ</h3>
+                        <p>We offer flexible minimum order quantities to accommodate your business needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+	<!--
+    <section id="contact-us" class="contact-form container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name (required)</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Company Name (optional)</label>
+                <input type="text" id="company" name="company">
+            </div>
+            <div class="form-group">
+                <label for="country">Country (required)</label>
+                <input type="text" id="country" name="country" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone (optional)</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="email">Email/WhatsApp (optional)</label>
+                <input type="text" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="inquiry">Inquiry (optional)</label>
+                <textarea id="inquiry" name="inquiry" rows="4"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+		<p style="text-align: left;">We will respond within one business day.</p>
+	</section>
+
+		-->
+	<section id="contact-us" class="contact-form container">
+	
+		<div class="joinusDiv">
+			<iframe id="joinusForm" src="https://docs.google.com/forms/d/e/1FAIpQLScwTbgnHcjInCZtAozGcmpGR2Es5fZYH3H7hs0hUyQwbQUzng/viewform?embedded=true" 
+			width="100%" height=1750  frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+		</div>		
+		
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-details">
+                <h2>Contact NenPower</h2>
+                <div class="contact-item">
+                    <i>📧</i>
+                    <span>join@nenpower.com</span>
+                </div>
+				<!-- 
+                <div class="contact-item">
+                    <i>📱</i>
+                    <span>WhatsApp: +86 123 456 7890</span>
+                </div>
+				-->
+                <div class="contact-item">
+                    <i>☎️</i>
+                    <span>Phone: +86 18621809060</span>
+                </div>
+                <div class="contact-item">
+                    <i>📍</i>
+                    <span>12th Floor, No. 258 Guoxia Road, Yangpu District, Shanghai, China</span>
+                </div>
+            </div>
+        </div>
+		<div>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3408.629112277654!2d121.50333507609251!3d31.313994557308423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b273a521190e8f%3A0xae0a9171a271fd64!2sGuo%20Xia%20Lu%2C%20Yang%20Pu%20Qu%2C%20Shang%20Hai%20Shi%2C%20China%2C%20200439!5e0!3m2!1sen!2ssg!4v1732523798579!5m2!1sen!2ssg" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+		
+    </section>
+
+<footer style="text-align: center; font-family: inherit; font-size: inherit; margin-top: 20px;">
+    <p style="display: inline;">Copyright © 2024 NenPower.com</p>
+    <p style="display: inline; margin-left: 10px;"><a href="https://nenpower.com/blog/category/residential-energy-storage/">More</a></p>
+</footer>
+
+    <script>
+        // Company intro slideshow
+        const images = document.querySelectorAll('.company-intro-image');
+        let currentImage = 0;
+
+        function showNextImage() {
+            images[currentImage].classList.remove('active');
+            currentImage = (currentImage + 1) % images.length;
+            images[currentImage].classList.add('active');
+        }
+
+        setInterval(showNextImage, 5000);
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Form data:', data);
+            // Here you would typically send the data to a server
+            alert('Thank you for your inquiry. We will get back to you soon!');
+            this.reset();
+        });
+		
+    </script>
+
+
+
+</body>
+</html>
+
